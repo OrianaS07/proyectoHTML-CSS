@@ -1,0 +1,288 @@
+:root{ /*Custom Propierties, variables de CSS*/
+    --blanco: #ffffff;
+    --oscuro: #302d42;
+    --morado: #6a55f8;
+    --violeta: #ca48f6;
+    --naranja: #f8ae6b;
+}
+/*Reinicia el tamaño para usar rem, los cuales son mejores
+al momento de realizar paginas para dispositivos de 
+diferentes tamaños*/
+/* Globales */
+html{
+    font-size: 62.5%;
+    box-sizing: border-box;
+    scroll-snap-type: y mandatory;
+}
+/*Scrol Snap*/
+.servicios, .navegacion-principal,
+.formulario{
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+/*Codigo para eliminar el modelo CAJA*/
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+
+body{ /*De forma general al todo el DOCUMENTO*/
+    font-size: 16px; /* 1rem = 10px*/
+    font-family: 'Krub', sans-serif;
+    background-image: linear-gradient(to top, #c4c7ca 0%, var(--blanco) 100%);
+}
+
+/*Clase general para varios elementos*/
+.contenedor{
+    max-width: 120rem;
+    /*Se pueden dejar 2 valores si se repiten
+    1ero arriba y abajo
+    2do derecha y izquierda*/
+    margin: 0 auto;
+}
+
+.boton{
+    background-color: var(--naranja);
+    color: var(--oscuro);
+    padding: 1rem 3rem;
+    margin-top: 4rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+
+@media (min-width: 768px) {
+    .boton{
+        width: auto;
+    }
+}
+
+.boton:hover {
+    cursor: pointer;
+}
+
+.sombra{
+    -webkit-box-shadow: 13px 14px 20px -8px rgba(135,128,135,1);
+    -moz-box-shadow: 13px 14px 20px -8px rgba(135,128,135,1);
+    box-shadow: 13px 14px 20px -8px rgba(135,128,135,1);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+/*Se generalizan para asì ahorra código*/
+/* tipografías */
+h1{
+    font-size: 3.8rem;
+}
+
+h2{
+    font-size: 2.8rem;
+}
+
+h3{
+    font-size: 1.8rem;
+}
+
+h1,h2,h3 {
+    text-align: center;    
+}
+/*--------------------------------------------------------------------------------*/
+/* Titulos */
+.titulo span{
+    font-size: 2rem;
+}
+/*--------------------------------------------------------------------------------*/
+/* Utilidades */
+.with-100{
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .with-100{
+        width: auto;
+    }
+}
+.flex{
+    display: flex;
+}
+.alinear-derecha{
+    justify-content: flex-end;
+}
+/* Navegación Principal */
+.nav-bg{
+    background-color: var(--oscuro);
+}
+
+/*--------------------------------------------------------------------------------*/
+/*pequeño - tlf*/
+.navegacion-principal{
+    display: flex;
+    flex-direction: column;
+}
+/*Grande - laptop*/
+/*Permite hacer la pantalla responsiva, solo cambia lo que debe cambiar
+cuando la pantalla es de tamaño diferente*/
+@media (min-width: 768px) {
+    .navegacion-principal{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+}
+
+.navegacion-principal a{
+    display: block;
+    text-align: center;
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;    
+    padding: 1rem;
+}
+
+.navegacion-principal a:hover{
+    background-color: var(--naranja);
+    color: var(--oscuro);
+}
+/*--------------------------------------------------------------------------------*/
+/* Hero */
+.hero{
+    background-image: url(../img/hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px; /**elimino el padding para poder posicionar la sombra*/
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.hero-contenido{
+    position:absolute;
+    /*Capa de Transparencia*/
+    background-color: rgba(0,0,0, .6); /*Sintaxis anterior*/
+    background-color: rgb(0 0 0 / 60%); /*Sintexis nueva*/
+    height: 100%;
+    width: 100%;
+
+    /*Alinear vertical y horizontalmente*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-contenido h2, 
+.hero-contenido p{
+    color: var(--blanco);
+}
+
+.hero-contenido .ubicacion{
+    display: flex;
+    align-items: flex-end;
+}
+/*--------------------------------------------------------------------------------*/
+/* Servicios */
+
+
+@media (min-width: 768px) {
+    /*Para Dispositivos GRANDES - dividir en 3*/
+    .servicios{
+        /*Divide en 3 columnas*/
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 1rem;
+    }
+}
+
+.servicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.servicio h3{
+    color: var(--oscuro);
+    font-weight: bold;
+}
+
+.servicio p{
+    line-height: 1.5;
+    text-align: center;
+}
+
+.servicio .iconos{
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--naranja);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*--------------------------------------------------------------------------------*/
+/* Contacto - Formulario */
+
+.formulario{
+    background-color: var(--oscuro);
+    width: min(60rem, 100%);
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset{
+    border: none;
+}
+
+.formulario legend{
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--naranja);
+    margin-bottom: 2rem;
+}
+@media (min-width: 768px) { /*Para que solo aplique en un tamaño*/
+    .contenedor-campos{
+        display:grid;
+        grid-template-columns: repeat(2,1fr); /*2 columnas*/
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem;
+    }
+
+    .campo:nth-child(3), .campo:nth-child(4){
+        grid-column: 1 / 3;
+    }
+}
+
+.campo{
+    margin-bottom: 1rem;
+}
+
+.campo label{
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+.campo textarea{
+    height: 20rem;
+}
+
+.input-text{
+    width: 100%;
+    border : none;
+    padding: 1rem;
+    border-radius: 1.5rem;
+}
+
+/*Footer*/
+.footer{
+    text-align: center;
+}
